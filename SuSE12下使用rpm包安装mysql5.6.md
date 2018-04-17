@@ -59,7 +59,7 @@ mysql> exit
 #相关命令        /usr/bin            --mysqladmin mysqldump等命令
 #启动脚本   　　 /etc/init.d/ 
 ```
-7. 安装完成后，你可以在目录/usr下找到my.cnf，不过这个my.cnf没什么内容，下面配置一下my.cnf，该配置仅作参考使用
+7. 安装完成后，你可以在目录/usr下找到my.cnf，不过这个my.cnf没什么内容，下面配置一下my.cnf，该配置仅作参考使用[可以不配置]
 ```
 [plain] 
 # The following options will be passed to all MySQL clients  
