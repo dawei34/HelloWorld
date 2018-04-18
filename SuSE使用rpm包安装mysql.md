@@ -1,10 +1,10 @@
 ##### Open SUSE12.2 MySQL5.6数据库安装配置
-[系统环境：Open SUSE12.2 x86_64]
-
-
+`系统环境：Open SUSE12.2 x86_64`
 1. 安装前准备     
+```
 下载适配SuSE12的mysql5.6版本的rpm安装包     
 地址：https://dev.mysql.com/downloads/mysql/
+```
 
 2.检查系统中是否存在存在未安装的mysql     
 ```
