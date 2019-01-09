@@ -1,5 +1,5 @@
 ```
-1.用户f
+1.用户
  创建用户：useradd  该命令需要用root用户执行
            useradd -m pxl  创建一个pxl用户并创建默认户家目录/home/pxl。-m：Create home directory for the new user -d指定用户家目录。useradd -d /user/pxl -m pxl
 		   useradd -s /usr/bin/csh -g group -m pxl    创建一个pxl用户并指定登录的shell为csh 如果不指定shell默认为bash.指定用户组 为group 当然这个用户组需要存在，指定默认为users
