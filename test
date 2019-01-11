@@ -15,33 +15,49 @@ System.out.println(result);
 }}
 
 2java统计字符串中每个字符出现的次数
+package com.huawei.bes.pc.base.validationbc.common.mt;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import com.alibaba.fastjson.JSONObject;
+
+public class test
+{
+
 public static void count(String str){
-        //将字符串转化为字符数组
-        char[] chars = str.toCharArray();
-        //创建一个HashMap名为hm
-        HashMap<Character,Integer> hm = new HashMap();
-        //定义一个字符串c，循环遍历遍历chars数组
-        for(char c : chars){
-            //containsKey(c),当c不存在于hm中
-            if(!hm.containsKey(c)){
-            hm.put(c,1);
-          }else{ 
-          //否则获得c的值并且加1
-            hm.put(c, hm.get(c)+1);
-            }
-        //或者上面的if和else替换成下面这一行
-        /*  hm.put(c,hm.containsKey(c) ? hm.get(c)+1:1);*/
+    //将字符串转化为字符数组
+    char[] chars = str.toCharArray();
+    //创建一个HashMap名为hm
+    HashMap<Character,Integer> hm = new HashMap();
+    //定义一个字符串c，循环遍历遍历chars数组
+    for(char c : chars){
+        //containsKey(c),当c不存在于hm中
+        if(!hm.containsKey(c)){
+        hm.put(c,1);
+      }else{ 
+      //否则获得c的值并且加1
+        hm.put(c, hm.get(c)+1);
         }
-        for(Character key: hm.keySet()){
-            //hm.keySet()代表所有键的集合,进行格式化输出
-            System.out.println(key + "====" + hm.get(key));
-        }
+    //或者上面的if和else替换成下面这一行
+    /*  hm.put(c,hm.containsKey(c) ? hm.get(c)+1:1);*/
     }
-    public static void main(String[] args) {
-        // TODO 自动生成的方法存根
-        String str = "abcaaaefdabbhg";
-        count(str);
+    //List list = new ArrayList();
+    JSONObject jo = new JSONObject();
+    for(Character key: hm.keySet()){
+        //hm.keySet()代表所有键的集合,进行格式化输出
+        //String s = key+":"+hm.get(key);
+        //list.add(s); 
+        jo.put(key.toString(), hm.get(key));       
     }
+    System.out.println(jo);
+}
+public static void main(String[] args) {
+    // TODO 自动生成的方法存根
+    String str = "abcaaaefdabbhg";
+    count(str);
+}
 }
 
 3二进制转换成十进制
@@ -52,4 +68,103 @@ String s = sc.nextLine();
  System.out.println("Output:"+Integer.parseInt(s,2));
 }}
 
-4
+4字符串是否以元音结尾
+public static void main(String[] args) {
+    // 要验证的字符串
+    Scanner sc = new Scanner(System.in);
+    String str = sc.nextLine();
+    String regEx = "/[aeiouAEIOU]$/";
+    // 编译正则表达式
+    Pattern pattern = Pattern.compile(regEx);
+    // 忽略大小写的写法
+    // Pattern pat = Pattern.compile(regEx, Pattern.CASE_INSENSITIVE);
+    Matcher matcher = pattern.matcher(str);
+    // 字符串是否与正则表达式相匹配
+    boolean rs = matcher.matches();
+    System.out.println(rs);
+}
+
+5 字符串升序排序
+public class test {
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        Scanner in=new Scanner(System.in);
+        while(in.hasNext()){
+            String string=in.nextLine();
+            LinkedList<String> list=new LinkedList<String>();
+            char[] cs=string.toCharArray();
+            for(int i=0;i<cs.length;i++){
+                if((cs[i]>='a'&&cs[i]<='z')||(cs[i]>='A'&&cs[i]<='Z')){
+                    list.add(String.valueOf(cs[i]));
+                }
+                
+            }    
+            //字符串忽略大小写排序
+            Collections.sort(list, String.CASE_INSENSITIVE_ORDER);
+            
+            for(int i=0,j=0;i<cs.length;i++){
+                if((cs[i]>='a'&&cs[i]<='z')||(cs[i]>='A'&&cs[i]<='Z')){
+                    System.out.print(list.get(j));
+                    j++;
+                }else{
+                    System.out.print(cs[i]);
+                }
+            }
+            System.out.println();
+        }        
+    }
+}
+
+6删除第一个字符串中包含第二个字符串的字符
+public class test {
+        public static void main(String[] args) {
+            // TODO Auto-generated method stub
+            //注意String、StringBuffer、StringBuilder的区别
+            StringBuilder str1=new StringBuilder("we are student");
+            StringBuilder str2=new StringBuilder("aeiou");
+
+            for(int i=0;i<str1.length();i++){
+                for(int j=0;j<str2.length();j++){
+                    if(str2.charAt(j)==str1.charAt(i)){
+                        str1.replace(i, i+1, "");
+                    }
+                }
+            }
+            System.out.println(str1);
+        }}
+        
+7第K大的数
+public static int partition(int[] arr,int low,int high){
+        int temp=arr[low];
+        while(low<high){
+            while(arr[high]<=temp&&high>low)
+                --high;
+            arr[low]=arr[high];
+            while(arr[low]>=temp&&low<high)
+                ++low;
+            arr[high]=arr[low];
+        }
+        arr[high]=temp;
+        return high;        
+    }
+    public static void find_k(int k,int[] arr,int low,int high){
+        int temp=partition(arr,low,high);
+        if(temp==k-1){
+            System.out.print("第"+k+"大的数是："+arr[temp]);
+        }else if(temp>k-1){
+            find_k(k,arr,low,temp-1);           
+        }else{
+            find_k(k-temp,arr,temp+1,high);
+        }
+    }
+    
+
+    public static void main(String[] args) {
+        int[] arr={3,1,2,5,4,7,6};
+        find_k(2,arr,0,arr.length-1);
+    }
+ 
