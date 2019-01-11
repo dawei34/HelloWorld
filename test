@@ -1,0 +1,55 @@
+1读入一个字符串str,输出字符串中连续最长的字符串
+public class test{
+public static void main(String[] args){
+Scanner sc = new Scanner(System.in);
+String s = sc.nextLine();
+String[] arr = s.split("[\\D]+");
+String result="";
+int max = 0;
+for(int i=0;i<arr.length;i++){
+if(arr[i].length>max){
+max=arr[i].length();
+result=arr[i];
+}}
+System.out.println(result);
+}}
+
+2java统计字符串中每个字符出现的次数
+public static void count(String str){
+        //将字符串转化为字符数组
+        char[] chars = str.toCharArray();
+        //创建一个HashMap名为hm
+        HashMap<Character,Integer> hm = new HashMap();
+        //定义一个字符串c，循环遍历遍历chars数组
+        for(char c : chars){
+            //containsKey(c),当c不存在于hm中
+            if(!hm.containsKey(c)){
+            hm.put(c,1);
+          }else{ 
+          //否则获得c的值并且加1
+            hm.put(c, hm.get(c)+1);
+            }
+        //或者上面的if和else替换成下面这一行
+        /*  hm.put(c,hm.containsKey(c) ? hm.get(c)+1:1);*/
+        }
+        for(Character key: hm.keySet()){
+            //hm.keySet()代表所有键的集合,进行格式化输出
+            System.out.println(key + "====" + hm.get(key));
+        }
+    }
+    public static void main(String[] args) {
+        // TODO 自动生成的方法存根
+        String str = "abcaaaefdabbhg";
+        count(str);
+    }
+}
+
+3二进制转换成十进制
+public class test{
+public static void main(String[] args){
+Scanner sc = new Scanner(System.in);
+String s = sc.nextLine();
+ System.out.println("Output:"+Integer.parseInt(s,2));
+}}
+
+4
