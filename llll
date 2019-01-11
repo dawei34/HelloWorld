@@ -391,7 +391,7 @@ public class MathForSci
         Scanner sc = new Scanner(new BufferedInputStream(System.in));
         LocalDate ld1 = LocalDate.parse(sc.next(), DateTimeFormatter.ofPattern("yyyyMMdd"));
         LocalDate ld2 = LocalDate.parse(sc.next(), DateTimeFormatter.ofPattern("yyyyMMdd"));
-        System.out.println(ld1.until(ld2, ChronoUnit.DAYS));
+        System.out.println(ld1.until(ld2, ChronoUnit.DAYS+1));
         sc.close();
     }*/
     
