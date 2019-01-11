@@ -1,43 +1,369 @@
-package interview;
+import java.util.ArrayList;
+import java.util.Scanner;
 
-import java.io.BufferedReader; 
-import java.io.IOException; 
-import java.io.InputStreamReader; 
-import java.util.Stack;
 
-public class SwitchNumbers {
+public class MathForSci
+{   
+    /**
+     * 科学计数法
+     *//*
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        BigDecimal s = input.nextBigDecimal();
+        System.out.println(s.toPlainString());
+        input.close();
+    }*/
+    
+    /**
+     * 统计字符串中每个字符出现的频率
+     *//*
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine();
+        char[] reInput = input.replace(" ", "").toCharArray();
+        Map<Character, Integer> map = new HashMap<Character,Integer>();
+        for(char ch : reInput){
+            if (map.containsKey(ch)) {
+                Integer old = map.get(ch);
+                map.put(ch, old + 1);
+            } 
+            else {
+                map.put(ch,1);
+            }
+        }
+        System.out.println(map.toString().replace("=", ":"));
+    }*/
+    
+    /**
+     * 判断是否以元音字母结尾
+     *//*
+    public static void main(String[] args) {
+     // 要验证的字符串
+     Scanner sc = new Scanner(System.in);
+     String str = sc.nextLine();
+     String regEx = "aeiouAEIOU";//元音字符串
+     String endStr = str.substring(str.length()-1);//截取输入字符串最后一个字符
+     System.out.println(regEx.contains(endStr));
+     }*/
+    
+    /**
+     * 二级制转换成十进制
+     *//*
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        System.out.println(Integer.parseInt(s,2));
+    }*/
+    
+    /**
+     * 字符串升序排序
+     *//*
+    public static void main(String[] args)
+    {
+        Scanner in=new Scanner(System.in);
+        while(in.hasNext()){
+            String string=in.nextLine();
+            LinkedList<String> list=new LinkedList<String>();
+            char[] cs=string.toCharArray();
+            for(int i=0;i<cs.length;i++){
+                if((cs[i]>='a'&&cs[i]<='z')||(cs[i]>='A'&&cs[i]<='Z')){
+                list.add(String.valueOf(cs[i]));
+                }
+            } 
+            //字符串忽略大小写排序
+            Collections.sort(list, String.CASE_INSENSITIVE_ORDER);
+    
+            for(int i=0,j=0;i<cs.length;i++){
+                if((cs[i]>='a'&&cs[i]<='z')||(cs[i]>='A'&&cs[i]<='Z')){
+                    System.out.print(list.get(j));
+                    j++;
+                }else{
+                    System.out.print(cs[i]);
+                }
+            } 
+        }
+    }*/
+    
+    
+    /**
+     * 从第一个字符串中删除第二个字符串中所有的字符
+     *//*
+    public static void main(String[] args) {
+         //注意String、StringBuffer、StringBuilder的区别
+         Scanner sc1 = new Scanner(System.in);
+         StringBuilder str1=new StringBuilder(sc1.nextLine());
+         StringBuilder str2=new StringBuilder(sc1.nextLine());
+    
+         for(int i=0;i<str1.length();i++){
+             for(int j=0;j<str2.length();j++){
+                 if(str2.charAt(j)==str1.charAt(i)){
+                     str1.replace(i, i+1, "");
+                 }
+             }
+         }
+         System.out.println(str1);
+    }*/
+    
+    
+    /**
+     * 寻找第K大
+     *//*
+    public int findKth(int[] a, int n, int K) {
+        // write code here
+        quickSort(a,0,n-1);
+        return a[n-K];//看清楚是第K大，不是第K小，我是从小到大排的数
+    }
+    //下面是快排经典代码
+    public void quickSort(int[] a,int start,int end){
+        if(start<end){
+            int i=partition(a,start,end);
+            quickSort(a,i+1,end);
+            quickSort(a,start,i-1);
+        }
+    }
+    public int partition(int[]a,int p,int q){//以数组第一个数为基准将数组分为左右两部分，左边小于基数，右边大于基数，然后把基数放在数组中合适的位置，返回该位置
+        int x=a[p];
+        int i=p;
+        for(int j=p+1;j<=q;j++){
+            if(a[j]<x){
+                swap(a,i+1,j);
+                i++;
+            }
+        }
+        swap(a,p,i);
+        return i;
+    }
+    public void swap(int[]a ,int i,int j){
+        int temp=a[i];
+        a[i]=a[j];
+        a[j]=temp;
+    }
+    public static void main(String[] args)
+    {
+        int[] a = {1,3,5,2,2};
+        int n = 5;
+        int K = 3;
+        System.out.println("返回：" + new Aaaa().findKth(a,n,K));
+    }*/
 
-public static void main(String[] args) throws Exception, IOException 
-{ 
-int num = 0; 
-int base = 0; 
-BufferedReader buf = null; 
-System.out.print(“请输入你要转换的数字:”); 
-buf = new BufferedReader(new InputStreamReader(System.in)); 
-num = Integer.parseInt(buf.readLine());//要转换的数字 
-System.out.print(“请输入想要转换的进制:”); 
-buf = new BufferedReader(new InputStreamReader(System.in)); 
-base = Integer.parseInt(buf.readLine());//将转换为的进制 
-System.out.println(Switch(num,base)); 
-}
+    /**
+     * 对于一个给定的字符串，我们需要在线性时间里对它做一些变形
+     *//*
+    public static void main(String[] args) {
+         // TODO Auto-generated method stub
+         Scanner scanner = new Scanner(System.in);
+         while (scanner.hasNext()) {
+             String s = scanner.nextLine();
+             int n = scanner.nextInt();
+             System.out.println(transString(n, s));
+         }
+    }
+    
+    public static String transString(int n, String s) {
+         int flag = 0;
+         if(s.charAt(s.length()-1) == ' '){
+             flag = 1;
+             s = s.substring(0, s.length()-1);
+         }
+         String[] strings = s.split(" ");
+         StringBuffer tranBuffer = new StringBuffer();
+         if(flag == 1){
+             tranBuffer.append(" ");
+         }
+         for (int i = strings.length - 1; i >= 0; i--) {
+             StringBuffer buffer = new StringBuffer(strings[i]);
+             for (int j = 0; j < strings[i].length(); j++) {
+                 if (Character.isUpperCase(strings[i].charAt(j))) {
+                     buffer.setCharAt(j,Character.toLowerCase(strings[i].charAt(j)));
+                 } else {
+                     buffer.setCharAt(j,
+                     Character.toUpperCase(strings[i].charAt(j)));
+                 }
+             }
+             if (i != 0) {
+                 tranBuffer.append(buffer + " ");
+             } else {
+                 tranBuffer.append(buffer);
+             }
+         }
+         return tranBuffer.toString();
+     }*/
+    
+    /**
+     * 统计兔子的总数
+     *//*
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+          while(sc.hasNext()){
+            int input = sc.nextInt();
+            System.out.println(MathForSci.getNumber(input));
+                     
+          }
+     }
+      //通过列举出每月的有生育能力兔子的数目，没有生能力的兔子的说目，一月大的兔子的数目和二月大的兔子的数目可知
+      //
+      public static int getNumber(int mounth){
+        if(mounth == 1 || mounth == 2){
+          return 1;
+        }
+        int tempold = 1;
+        int tempyoung = 1;
+        int mounth1 = 1;
+        int mounth2 = 0;
+        for(int j = 4; j <= mounth; j++){
+          //第一步，第二个月的变成了有生育能力的兔子
+          tempold += mounth2;
+          //第二步，一个月大的兔子变成了两个月大的兔子
+          mounth2 = mounth1;
+          //第三步，有生育能力的兔子生出了一个月大的小兔子
+          mounth1 = tempold;
+          //当月小兔子的个数
+          tempyoung = mounth1 + mounth2;      
+         
+        } 
+        return tempold + tempyoung;
+      }*/
+    
+    /**
+     * 约瑟夫问题
+     *//*
+      public int getResult(int n, int m) {
+          if (n < 0 || m < 0) {
+            return -1;
+          }
+          int last = 0;
+          for(int i=2;i<=n;++i){
+            last = (last+m)%i;
+          }
+          // 因为实际编号为(1~n)
+          return (last+1);
+      }
+      public static void main(String[] args)
+      {
+        Scanner sc = new Scanner(System.in);
+        System.out.println(new MathForSci().getResult(sc.nextInt(),sc.nextInt()));
+      }*/
+    
+    
+    /**
+     * 十进制转任意进制
+     * 
+     *//*
+    public static void main(String[] args)
+    {
+        int num = 0;
+        int base = 0;
+        Scanner sc = new Scanner(System.in);
+        num = Integer.parseInt(sc.next());// 要转换的数字
+        base = Integer.parseInt(sc.next());// 将转换为的进制
+        System.out.println(Switch(num, base));
+    }
 
-public static String Switch(int num,int base) { 
-StringBuffer sb = new StringBuffer(); 
-String all = “0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ”; 
-String digths = all.substring(0, base);//将要转换的进制字母对应表 
-//只能装字符型的栈 
-Stack s = new Stack(); 
-while(num != 0) 
-{ 
-// digths.charAt(n % base) 返回指定索引处的值 
-s.push(digths.charAt(num%base)); 
-num/=base; 
-} 
-while(! s.isEmpty()) 
-{ 
-sb.append(s.pop()); 
-} 
-return sb.toString(); 
-}
+    public static String Switch(int num, int base)
+    {
+        StringBuffer sb = new StringBuffer();
+        String all = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String digths = all.substring(0, base);// 将要转换的进制字母对应表
+        // 只能装字符型的栈
+        Stack s = new Stack();
+        while (num != 0)
+        {
+            // digths.charAt(n % base) 返回指定索引处的值
+            s.push(digths.charAt(num % base));
+            num /= base;
+        }
+        while (!s.isEmpty())
+        {
+            sb.append(s.pop());
+        }
+        return sb.toString();
+    }*/
+    
+    /**
+     * 驼峰命名
+     * @param hello_world</br>nice_to_meet_you
+     *//*
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        StringBuilder result=new StringBuilder();
+        String a[]=str.split("_");
+        for(String s:a){
+            if(result.length()==0){
+                result.append(s.toLowerCase());
+            }else{
+                result.append(s.substring(0, 1).toUpperCase());
+                result.append(s.substring(1).toLowerCase());
+            }
+        }
+        System.out.println(result.toString());
+    }*/
+    
+    /**
+     * 
+     * 字符串反转
+     *//*
+    
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in); 
+        StringBuffer str = new StringBuffer(sc.nextLine());
+        System.out.println(str.reverse().toString());
+    }*/
+    
+    /**
+     * 
+     * 超长正整数相加
+     *//*
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        String str1 = sc.nextLine();
+        String str2 = null;
+        //BigDecimal b1 = sc.nextBigDecimal();
+        //BigDecimal b2 = null;
 
+        if (sc.hasNextLine()){
+           // b2= b1.add(sc.nextBigDecimal());
+           str2 = sc.nextLine();
+        }
+        System.out.println(AddLongInteger(str1,str2));
+        
+    }
+    public static String AddLongInteger(String s1, String s2)
+    {
+        BigDecimal b1 = new BigDecimal(s1);
+        BigDecimal b2 = new BigDecimal(s2);
+        return b1.add(b2).toString();
+    }*/
+    
+    
+    /**
+     * 汉诺塔游戏
+     *//*
+    private static String[] pos = {"left", "mid", "right"};
+    public static ArrayList<String> getSolution(int n) {      
+        return getSolution(n, 0, 2);
+    }
+    public static ArrayList<String> getSolution(int n, int from, int to) {       
+        if(n==0) return new ArrayList<String>();
+        ArrayList<String> list = getSolution(n-1, from, 3-from-to);
+        list.add("move from "+pos[from]+" to "+pos[to]);
+        list.addAll(getSolution(n-1, 3-from-to, to));
+        return list;
+    }
+    
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println(getSolution(sc.nextInt()).toString().replace("[", "").replace("]", ""));
+    }*/
+    
+    
+    
+    
+    
 }
