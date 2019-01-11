@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.io.BufferedInputStream;
 import java.util.Scanner;
 
 
@@ -362,8 +362,38 @@ public class MathForSci
         System.out.println(getSolution(sc.nextInt()).toString().replace("[", "").replace("]", ""));
     }*/
     
+    /**
+     * 给定两个字符串，合并成一个新的字符串S
+     *//*
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            String str1=sc.next();
+            String str2=sc.next();
+            StringBuilder sb=new StringBuilder();
+            //把第一个字符串放到容器当中
+            sb.append(str1);
+            //对第二个字符串逆序输出，添加到容器当中
+            int k=1;
+            for(int j=str2.length()-1;j>=0;j--){
+                sb.insert(k,str2.charAt(j));
+                k+=2;
+            }
+        System.out.println(sb.toString());
+        }
+    }*/
     
-    
+    /**
+     * 有两个日期，求两个时间之间的天数
+     *//*
+    public static void main(String... as)
+    {
+        Scanner sc = new Scanner(new BufferedInputStream(System.in));
+        LocalDate ld1 = LocalDate.parse(sc.next(), DateTimeFormatter.ofPattern("yyyyMMdd"));
+        LocalDate ld2 = LocalDate.parse(sc.next(), DateTimeFormatter.ofPattern("yyyyMMdd"));
+        System.out.println(ld1.until(ld2, ChronoUnit.DAYS));
+        sc.close();
+    }*/
     
     
 }
