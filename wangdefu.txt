@@ -152,7 +152,6 @@ public class MathForSci
      * 对于一个给定的字符串，我们需要在线性时间里对它做一些变形
      *//*
     public static void main(String[] args) {
-         // TODO Auto-generated method stub
          Scanner scanner = new Scanner(System.in);
          while (scanner.hasNext()) {
              String s = scanner.nextLine();
@@ -391,9 +390,43 @@ public class MathForSci
         Scanner sc = new Scanner(new BufferedInputStream(System.in));
         LocalDate ld1 = LocalDate.parse(sc.next(), DateTimeFormatter.ofPattern("yyyyMMdd"));
         LocalDate ld2 = LocalDate.parse(sc.next(), DateTimeFormatter.ofPattern("yyyyMMdd"));
-        System.out.println(ld1.until(ld2, ChronoUnit.DAYS+1));
+        System.out.println(ld1.until(ld2, ChronoUnit.DAYS + 1));
         sc.close();
     }*/
     
+    /**
+     * 12翻一下是21，34翻一下是43
+     *//*
+    public static int Reverse(int num){
+        int numReverse=0;//初始化发转后的数字
+        while(num!=0){
+            numReverse=numReverse*10+num%10;
+            num=num/10;
+        }
+        return numReverse;
+    }
+    public static void main(String [] args){
+        Scanner cin=new Scanner(System.in);
+        int n=cin.nextInt();
+        int num1,num2;
+        if(n>0){
+            for(int i=1;i<=n;i++){
+                num1=cin.nextInt();
+                num2=cin.nextInt();
+                if((num1>0&&num2<=10000)||(num1<=10000&&num2>0))
+                    {
+                    int sum=num1+num2;//和
+                    int sumReverse=Reverse(num1)+Reverse(num2);//反转的和
+                    if(Reverse(sum)==sumReverse)//和的反转＝反转的和
+                        System.out.println(sum);
+                    else
+                        System.out.println("NO");
+                }
+                else System.out.println("NO");
+            }
+        }
+        else
+            System.out.println("NO");
+    }*/
     
 }
